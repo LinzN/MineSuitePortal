@@ -1,0 +1,24 @@
+name: cookieApiPortal
+version: ${project.version}
+description: Portalplugin
+authors: [Kekshaus]
+main: de.kekshaus.cookieApi.portal.Portalplugin
+
+commands:
+  setportal:
+    description: Set your home.
+  delportal:
+    description: Teleport back to your set home.
+
+permissions:
+    cookieApi.portal.team:
+        description: Alle Permissions
+        children:
+            cookieApi.portal.setportal: true
+            cookieApi.portal.delportal: true
+    cookieApi.portal.setportal:
+        description: Teleport to home
+        default: op
+    cookieApi.portal.delportal:
+        description: Teleport to home
+        default: op

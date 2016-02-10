@@ -1,11 +1,9 @@
 package de.kekshaus.cookieApi.portal;
 
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
-import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
 import de.kekshaus.cookieApi.portal.commands.DeletePortalCommand;
 import de.kekshaus.cookieApi.portal.commands.SetPortalCommand;
 import de.kekshaus.cookieApi.portal.database.MinePortalDB;

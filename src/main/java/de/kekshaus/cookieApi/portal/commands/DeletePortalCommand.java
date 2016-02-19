@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 import de.kekshaus.cookieApi.bukkit.MessageDB;
 import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.database.object.PortalsManager;
+import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
 
 public class DeletePortalCommand implements CommandExecutor {
 	public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
@@ -28,7 +28,7 @@ public class DeletePortalCommand implements CommandExecutor {
 					if (sender instanceof Player) {
 
 						if (args.length > 0) {
-							PortalsManager.deletePortal(args[0]);
+							PTStreamInApi.deletePortal(args[0]);
 							return;
 						}
 					}

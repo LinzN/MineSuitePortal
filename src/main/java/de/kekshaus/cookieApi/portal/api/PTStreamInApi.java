@@ -1,11 +1,11 @@
-package de.kekshaus.cookieApi.portal.database.object;
+package de.kekshaus.cookieApi.portal.api;
 
 import com.sk89q.worldedit.bukkit.selections.Selection;
 
 import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
-import de.kekshaus.cookieApi.bukkit.managerApi.OtherApi;
 import de.kekshaus.cookieApi.portal.Portalplugin;
 import de.kekshaus.cookieApi.portal.database.ConnectionInject;
+import de.kekshaus.cookieApi.portal.database.object.Portal;
 import de.kekshaus.cookieApi.warp.commands.WarpPortalApi;
 
 import org.bukkit.Bukkit;
@@ -18,7 +18,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PortalsManager {
+public class PTStreamInApi {
 
 	public static HashMap<World, ArrayList<Portal>> PORTALS = new HashMap<>();
 
@@ -94,7 +94,7 @@ public class PortalsManager {
 
 	public static void teleportPlayer(Player player, Portal p) {
 		if (p.getType().equalsIgnoreCase("server")) {
-			OtherApi.sendOtherServer(player.getName(), p.getDestination());
+			PTStreamOutApi.sendOtherServer(player.getName(), p.getDestination());
 		} else if (p.getType().equalsIgnoreCase("warp")) {
 			WarpPortalApi.warp(player, p.getDestination());
 		}

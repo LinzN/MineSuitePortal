@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import de.kekshaus.cookieApi.portal.database.object.PortalsManager;
+import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
 
 public class ConnectionInject {
 
@@ -109,7 +109,7 @@ public class ConnectionInject {
 								result.getInt("ymin"), result.getInt("zmin"));
 						Location max = new Location(Bukkit.getWorld(result.getString("world")), result.getInt("xmax"),
 								result.getInt("ymax"), result.getInt("zmax"));
-						PortalsManager.addPortal(name, type, dest, filltype, max, min);
+						PTStreamInApi.addPortal(name, type, dest, filltype, max, min);
 					}
 				}
 				result.close();

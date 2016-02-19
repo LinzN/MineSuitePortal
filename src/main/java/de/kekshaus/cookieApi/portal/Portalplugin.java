@@ -4,12 +4,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
+import de.kekshaus.cookieApi.portal.Listener.BukkitSockPortalListener;
+import de.kekshaus.cookieApi.portal.Listener.PhysicsListener;
+import de.kekshaus.cookieApi.portal.Listener.PlayerMoveListener;
+import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
 import de.kekshaus.cookieApi.portal.commands.DeletePortalCommand;
 import de.kekshaus.cookieApi.portal.commands.SetPortalCommand;
 import de.kekshaus.cookieApi.portal.database.MinePortalDB;
-import de.kekshaus.cookieApi.portal.database.object.PhysicsListener;
-import de.kekshaus.cookieApi.portal.database.object.PlayerMoveListener;
-import de.kekshaus.cookieApi.portal.database.object.PortalsManager;
 
 public class Portalplugin extends JavaPlugin {
 	private static Portalplugin inst;
@@ -23,8 +24,9 @@ public class Portalplugin extends JavaPlugin {
 			loadCommands();
 			getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
 			getServer().getPluginManager().registerEvents(new PhysicsListener(), this);
-			if (PortalsManager.loadPortals()) {
-				this.getLogger().info(PortalsManager.PORTALS.size() + " Portals loaded!");
+			getServer().getPluginManager().registerEvents(new BukkitSockPortalListener(), this);
+			if (PTStreamInApi.loadPortals()) {
+				this.getLogger().info(PTStreamInApi.PORTALS.size() + " Portals loaded!");
 			}
 		}
 	}

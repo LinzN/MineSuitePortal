@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
 import de.kekshaus.cookieApi.bukkit.MessageDB;
 import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.database.object.PortalsManager;
+import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
 
 public class SetPortalCommand implements CommandExecutor {
 	public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
@@ -29,10 +29,10 @@ public class SetPortalCommand implements CommandExecutor {
 				public void run() {
 					if (sender instanceof Player) {
 						if (args.length == 3) {
-							PortalsManager.setPortal(sender, server, args[0], args[1], args[2], "AIR");
+							PTStreamInApi.setPortal(sender, server, args[0], args[1], args[2], "AIR");
 							return;
 						} else if (args.length == 4) {
-							PortalsManager.setPortal(sender, server, args[0], args[1], args[2], args[3]);
+							PTStreamInApi.setPortal(sender, server, args[0], args[1], args[2], args[3]);
 							return;
 						}
 

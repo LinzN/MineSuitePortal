@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.database.object;
+package de.kekshaus.cookieApi.portal.Listener;
 
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -6,6 +6,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
+
+import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
+import de.kekshaus.cookieApi.portal.database.object.Portal;
 
 public class PhysicsListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
@@ -15,11 +18,11 @@ public class PhysicsListener implements Listener {
 				|| e.getBlock().getType() == Material.SUGAR_CANE_BLOCK)) {
 			return;
 		}
-		if (!PortalsManager.PORTALS.containsKey(e.getBlock().getWorld())) {
+		if (!PTStreamInApi.PORTALS.containsKey(e.getBlock().getWorld())) {
 			return;
 		}
 
-		for (Portal p : PortalsManager.PORTALS.get(e.getBlock().getWorld())) {
+		for (Portal p : PTStreamInApi.PORTALS.get(e.getBlock().getWorld())) {
 			if (p.isBlockInPortal(e.getBlock())) {
 				e.setCancelled(true);
 			}
@@ -34,11 +37,11 @@ public class PhysicsListener implements Listener {
 				|| e.getBlock().getType() == Material.SUGAR_CANE_BLOCK)) {
 			return;
 		}
-		if (!PortalsManager.PORTALS.containsKey(e.getBlock().getWorld())) {
+		if (!PTStreamInApi.PORTALS.containsKey(e.getBlock().getWorld())) {
 			return;
 		}
 
-		for (Portal p : PortalsManager.PORTALS.get(e.getBlock().getWorld())) {
+		for (Portal p : PTStreamInApi.PORTALS.get(e.getBlock().getWorld())) {
 			if (p.isBlockInPortal(e.getBlock())) {
 				e.setCancelled(true);
 			}

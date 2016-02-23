@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
-import de.kekshaus.cookieApi.bukkit.MessageDB;
+import de.kekshaus.cookieApi.bukkit.GlobalMessageDB;
 import de.kekshaus.cookieApi.portal.Portalplugin;
 import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
 
@@ -41,7 +41,7 @@ public class SetPortalCommand implements CommandExecutor {
 				}
 			});
 		} else {
-			sender.sendMessage(MessageDB.NO_PERMISSIONS);
+			sender.sendMessage(GlobalMessageDB.NO_PERMISSIONS);
 		}
 		return false;
 	}

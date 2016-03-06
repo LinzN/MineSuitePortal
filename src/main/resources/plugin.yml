@@ -4,7 +4,7 @@ description: Portalplugin
 authors: [Kekshaus]
 main: de.kekshaus.cookieApi.portal.Portalplugin
 load: POSTWORLD
-depend: [CookieApiBukkit]
+depend: [cookieApiBukkit]
 
 commands:
   setportal:

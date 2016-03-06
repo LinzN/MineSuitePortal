@@ -3,6 +3,8 @@ version: ${project.version}
 description: Portalplugin
 authors: [Kekshaus]
 main: de.kekshaus.cookieApi.portal.Portalplugin
+load: POSTWORLD
+depend: [CookieApiBukkit]
 
 commands:
   setportal:

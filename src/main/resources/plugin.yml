@@ -1,5 +1,5 @@
 name: cookieApiPortal
-version: ${project.version}
+version: ${project.version}.b${build.number}
 description: Portalplugin
 authors: [Kekshaus]
 main: de.kekshaus.cookieApi.portal.Portalplugin

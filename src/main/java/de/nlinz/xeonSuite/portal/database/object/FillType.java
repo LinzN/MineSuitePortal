@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.database.object;
+package de.nlinz.xeonSuite.portal.database.object;
 
 import org.bukkit.Material;
 

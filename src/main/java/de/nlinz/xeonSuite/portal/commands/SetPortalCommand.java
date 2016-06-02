@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.commands;
+package de.nlinz.xeonSuite.portal.commands;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,10 +9,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
-import de.kekshaus.cookieApi.bukkit.GlobalMessageDB;
-import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.bukkit.XeonSuiteBukkit;
+import de.nlinz.xeonSuite.bukkit.GlobalMessageDB;
+import de.nlinz.xeonSuite.portal.Portalplugin;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 
 public class SetPortalCommand implements CommandExecutor {
 	public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
@@ -23,7 +23,7 @@ public class SetPortalCommand implements CommandExecutor {
 
 	public boolean onCommand(final CommandSender sender, Command cmnd, String label, final String[] args) {
 		final Player player = (Player) sender;
-		final String server = CookieApiBukkit.getServerName();
+		final String server = XeonSuiteBukkit.getServerName();
 		if (player.hasPermission("cookieApi.portal.setportal")) {
 			this.executorServiceCommands.submit(new Runnable() {
 				public void run() {

@@ -1,12 +1,12 @@
-package de.kekshaus.cookieApi.portal.api;
+package de.nlinz.xeonSuite.portal.api;
 
 import com.sk89q.worldedit.bukkit.selections.Selection;
 
-import de.kekshaus.cookieApi.bukkit.CookieApiBukkit;
-import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.database.ConnectionInject;
-import de.kekshaus.cookieApi.portal.database.object.Portal;
-import de.kekshaus.cookieApi.warp.commands.WarpPortalApi;
+import de.nlinz.xeonSuite.bukkit.XeonSuiteBukkit;
+import de.nlinz.xeonSuite.portal.Portalplugin;
+import de.nlinz.xeonSuite.portal.database.ConnectionInject;
+import de.nlinz.xeonSuite.portal.database.object.Portal;
+import de.nlinz.xeonSuite.warp.commands.WarpPortalApi;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,7 +30,7 @@ public class PTStreamInApi {
 	}
 
 	public static boolean loadPortals() {
-		final String server = CookieApiBukkit.getServerName();
+		final String server = XeonSuiteBukkit.getServerName();
 		if (ConnectionInject.getPortals(server)) {
 			return true;
 		}

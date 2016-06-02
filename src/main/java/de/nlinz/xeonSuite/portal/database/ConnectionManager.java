@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.database;
+package de.nlinz.xeonSuite.portal.database;
 
 import java.sql.Connection;
 import java.sql.SQLException;

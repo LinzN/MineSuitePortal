@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.Listener;
+package de.nlinz.xeonSuite.portal.Listener;
 
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -7,8 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
-import de.kekshaus.cookieApi.portal.database.object.Portal;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.portal.database.object.Portal;
 
 public class PhysicsListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

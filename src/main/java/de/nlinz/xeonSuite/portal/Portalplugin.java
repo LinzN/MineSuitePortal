@@ -1,16 +1,16 @@
-package de.kekshaus.cookieApi.portal;
+package de.nlinz.xeonSuite.portal;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
-import de.kekshaus.cookieApi.portal.Listener.BukkitSockPortalListener;
-import de.kekshaus.cookieApi.portal.Listener.PhysicsListener;
-import de.kekshaus.cookieApi.portal.Listener.PlayerMoveListener;
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
-import de.kekshaus.cookieApi.portal.commands.DeletePortalCommand;
-import de.kekshaus.cookieApi.portal.commands.SetPortalCommand;
-import de.kekshaus.cookieApi.portal.database.MinePortalDB;
+import de.nlinz.xeonSuite.portal.Listener.BukkitSockPortalListener;
+import de.nlinz.xeonSuite.portal.Listener.PhysicsListener;
+import de.nlinz.xeonSuite.portal.Listener.PlayerMoveListener;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.portal.commands.DeletePortalCommand;
+import de.nlinz.xeonSuite.portal.commands.SetPortalCommand;
+import de.nlinz.xeonSuite.portal.database.MinePortalDB;
 
 public class Portalplugin extends JavaPlugin {
 	private static Portalplugin inst;

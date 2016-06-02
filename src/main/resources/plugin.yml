@@ -1,10 +1,10 @@
-name: cookieApiPortal
+name: XeonSuitePortal
 version: ${project.version}.b${build.number}
 description: Portalplugin
 authors: [Kekshaus]
-main: de.kekshaus.cookieApi.portal.Portalplugin
+main: de.nlinz.xeonSuite.portal.Portalplugin
 load: POSTWORLD
-depend: [cookieApiBukkit]
+depend: [XeonSuiteBukkit]
 
 commands:
   setportal:

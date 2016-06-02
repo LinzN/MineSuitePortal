@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.commands;
+package de.nlinz.xeonSuite.portal.commands;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,9 +9,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.kekshaus.cookieApi.bukkit.GlobalMessageDB;
-import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.bukkit.GlobalMessageDB;
+import de.nlinz.xeonSuite.portal.Portalplugin;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 
 public class DeletePortalCommand implements CommandExecutor {
 	public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,

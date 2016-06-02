@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.Listener;
+package de.nlinz.xeonSuite.portal.Listener;
 
 import java.util.HashSet;
 
@@ -14,9 +14,9 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.util.Vector;
 
-import de.kekshaus.cookieApi.portal.Portalplugin;
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
-import de.kekshaus.cookieApi.portal.database.object.Portal;
+import de.nlinz.xeonSuite.portal.Portalplugin;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.portal.database.object.Portal;
 
 public class PlayerMoveListener implements Listener {
 

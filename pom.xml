@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.cookieapi</groupId>
-    <artifactId>cookieApiPortal</artifactId>
+    <groupId>de.nlinz.xeonSuite</groupId>
+    <artifactId>XeonSuitePortal</artifactId>
     <version>1</version>
-    <name>cookieApiPortal</name>
+    <name>XeonSuitePortal</name>
 
 	<repositories>
       <repository>
@@ -30,11 +30,6 @@
            <artifactId>spigot-api</artifactId>
            <version>1.9.4-R0.1-SNAPSHOT</version>
     	</dependency>
-        <dependency>
-        	<groupId>de.cookieapi</groupId>
-        	<artifactId>cookieApiBukkit</artifactId>
-        	<version>1</version>
-        </dependency>
 <dependency>
   <groupId>com.sk89q.worldedit</groupId>
   <artifactId>worldedit-bukkit</artifactId>
@@ -51,13 +46,18 @@
   </exclusions>
 </dependency>
         <dependency>
-        	<groupId>de.cookieapi</groupId>
-        	<artifactId>cookieApiWarp</artifactId>
+        	<groupId>de.kekshaus</groupId>
+        	<artifactId>CookieSocket</artifactId>
         	<version>1</version>
         </dependency>
         <dependency>
-        	<groupId>de.kekshaus</groupId>
-        	<artifactId>CookieSocket</artifactId>
+        	<groupId>de.nlinz.xeonSuite</groupId>
+        	<artifactId>XeonSuiteBukkit</artifactId>
+        	<version>1</version>
+        </dependency>
+        <dependency>
+        	<groupId>de.nlinz.xeonSuite</groupId>
+        	<artifactId>XeonSuiteWarp</artifactId>
         	<version>1</version>
         </dependency>
     </dependencies>

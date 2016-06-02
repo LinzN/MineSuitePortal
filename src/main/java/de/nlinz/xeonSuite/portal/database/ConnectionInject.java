@@ -1,4 +1,4 @@
-package de.kekshaus.cookieApi.portal.database;
+package de.nlinz.xeonSuite.portal.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import de.kekshaus.cookieApi.portal.api.PTStreamInApi;
+import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 
 public class ConnectionInject {
 

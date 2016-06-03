@@ -4,7 +4,7 @@ import com.sk89q.worldedit.bukkit.selections.Selection;
 
 import de.nlinz.xeonSuite.bukkit.XeonSuiteBukkit;
 import de.nlinz.xeonSuite.portal.Portalplugin;
-import de.nlinz.xeonSuite.portal.database.ConnectionInject;
+import de.nlinz.xeonSuite.portal.database.PortalSqlActions;
 import de.nlinz.xeonSuite.portal.database.object.Portal;
 import de.nlinz.xeonSuite.warp.commands.WarpPortalApi;
 
@@ -24,14 +24,14 @@ public class PTStreamInApi {
 
 	public static void deletePortal(String name) {
 
-		if (ConnectionInject.delPortal(name)) {
+		if (PortalSqlActions.delPortal(name)) {
 			removePortal(name);
 		}
 	}
 
 	public static boolean loadPortals() {
 		final String server = XeonSuiteBukkit.getServerName();
-		if (ConnectionInject.getPortals(server)) {
+		if (PortalSqlActions.getPortals(server)) {
 			return true;
 		}
 		return false;
@@ -65,7 +65,7 @@ public class PTStreamInApi {
 		Location max = sel.getMaximumPoint();
 		Location min = sel.getMinimumPoint();
 
-		if (ConnectionInject.setPortal(p, server, name, type, dest, fill, min, max)) {
+		if (PortalSqlActions.setPortal(p, server, name, type, dest, fill, min, max)) {
 			addPortal(name, type, dest, fill, max, min);
 		}
 	}

@@ -11,7 +11,6 @@ import de.nlinz.xeonSuite.portal.Listener.XeonPortal;
 import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 import de.nlinz.xeonSuite.portal.commands.DeletePortalCommand;
 import de.nlinz.xeonSuite.portal.commands.SetPortalCommand;
-import de.nlinz.xeonSuite.portal.database.MinePortalDB;
 
 public class Portalplugin extends JavaPlugin {
 	private static Portalplugin inst;
@@ -21,16 +20,15 @@ public class Portalplugin extends JavaPlugin {
 	public void onEnable() {
 		inst = this;
 
-		if (MinePortalDB.create()) {
-			loadWorldEdit();
-			loadCommands();
-			getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
-			getServer().getPluginManager().registerEvents(new PhysicsListener(), this);
-			XeonSocketClientManager.registerDataListener(new XeonPortal());
-			if (PTStreamInApi.loadPortals()) {
-				this.getLogger().info(PTStreamInApi.PORTALS.size() + " Portals loaded!");
-			}
+		loadWorldEdit();
+		loadCommands();
+		getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
+		getServer().getPluginManager().registerEvents(new PhysicsListener(), this);
+		XeonSocketClientManager.registerDataListener(new XeonPortal());
+		if (PTStreamInApi.loadPortals()) {
+			this.getLogger().info(PTStreamInApi.PORTALS.size() + " Portals loaded!");
 		}
+
 	}
 
 	@Override

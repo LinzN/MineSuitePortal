@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.nlinz.xeonSuite.bukkit.XeonSuiteBukkit;
-import de.nlinz.xeonSuite.bukkit.GlobalMessageDB;
+import de.nlinz.xeonSuite.bukkit.utils.languages.GlobalLanguage;
 import de.nlinz.xeonSuite.portal.Portalplugin;
 import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 
@@ -21,11 +21,13 @@ public class SetPortalCommand implements CommandExecutor {
 	public SetPortalCommand(Portalplugin instance) {
 	}
 
+	@Override
 	public boolean onCommand(final CommandSender sender, Command cmnd, String label, final String[] args) {
 		final Player player = (Player) sender;
 		final String server = XeonSuiteBukkit.getServerName();
 		if (player.hasPermission("cookieApi.portal.setportal")) {
 			this.executorServiceCommands.submit(new Runnable() {
+				@Override
 				public void run() {
 					if (sender instanceof Player) {
 						if (args.length == 3) {
@@ -41,7 +43,7 @@ public class SetPortalCommand implements CommandExecutor {
 				}
 			});
 		} else {
-			sender.sendMessage(GlobalMessageDB.NO_PERMISSIONS);
+			sender.sendMessage(GlobalLanguage.NO_PERMISSIONS);
 		}
 		return false;
 	}

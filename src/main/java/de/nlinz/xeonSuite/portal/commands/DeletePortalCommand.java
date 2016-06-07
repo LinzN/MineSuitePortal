@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import de.nlinz.xeonSuite.bukkit.GlobalMessageDB;
+import de.nlinz.xeonSuite.bukkit.utils.languages.GlobalLanguage;
 import de.nlinz.xeonSuite.portal.Portalplugin;
 import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
 
@@ -20,10 +20,12 @@ public class DeletePortalCommand implements CommandExecutor {
 	public DeletePortalCommand(Portalplugin instance) {
 	}
 
+	@Override
 	public boolean onCommand(final CommandSender sender, Command cmd, String label, final String[] args) {
 		final Player player = (Player) sender;
 		if (player.hasPermission("cookieApi.portal.delportal")) {
 			this.executorServiceCommands.submit(new Runnable() {
+				@Override
 				public void run() {
 					if (sender instanceof Player) {
 
@@ -35,7 +37,7 @@ public class DeletePortalCommand implements CommandExecutor {
 				}
 			});
 		} else {
-			sender.sendMessage(GlobalMessageDB.NO_PERMISSIONS);
+			sender.sendMessage(GlobalLanguage.NO_PERMISSIONS);
 		}
 		return false;
 	}

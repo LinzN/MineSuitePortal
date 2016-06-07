@@ -25,7 +25,7 @@ public class SetPortalCommand implements CommandExecutor {
 	public boolean onCommand(final CommandSender sender, Command cmnd, String label, final String[] args) {
 		final Player player = (Player) sender;
 		final String server = XeonSuiteBukkit.getServerName();
-		if (player.hasPermission("cookieApi.portal.setportal")) {
+		if (player.hasPermission("xeonSuite.portal.setportal")) {
 			this.executorServiceCommands.submit(new Runnable() {
 				@Override
 				public void run() {

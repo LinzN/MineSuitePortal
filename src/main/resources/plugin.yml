@@ -13,14 +13,14 @@ commands:
     description: Teleport back to your set home.
 
 permissions:
-    cookieApi.portal.team:
+    xeonSuite.portal.team:
         description: Alle Permissions
         children:
-            cookieApi.portal.setportal: true
-            cookieApi.portal.delportal: true
-    cookieApi.portal.setportal:
+            xeonSuite.portal.setportal: true
+            xeonSuite.portal.delportal: true
+    xeonSuite.portal.setportal:
         description: Teleport to home
         default: op
-    cookieApi.portal.delportal:
+    xeonSuite.portal.delportal:
         description: Teleport to home
         default: op

@@ -1,16 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>de.nlinz.xeonSuite</groupId>
-	<artifactId>XeonSuitePortal</artifactId>
-	<version>1</version>
 	<name>XeonSuitePortal</name>
 
 	<repositories>
 		<repository>
-			<id>spigot-repo</id>
-			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+			<id>enigmar-repo</id>
+			<url>https://repository.enigmar.de/</url>
 		</repository>
 		<repository>
 			<id>sk89q-snapshots</id>
@@ -23,17 +19,12 @@
 					to download a SNAPSHOT dependency -->
 			</snapshots>
 		</repository>
-		<repository>
-			<id>Bytearray-repo</id>
-			<url>https://repo.bytearray.de/</url>
-		</repository>
 	</repositories>
 	<dependencies>
-		<!--Spigot API -->
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
 			<artifactId>worldedit-bukkit</artifactId>
-			<version>6.1.3-SNAPSHOT</version>
+			<version>6.1.5</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>bukkit</artifactId>
@@ -46,14 +37,35 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>de.nlinz.xeonSuite</groupId>
-			<artifactId>XeonSuiteBukkit</artifactId>
-			<version>1</version>
+			<groupId>com.sk89q.worldedit</groupId>
+			<artifactId>worldedit-core</artifactId>
+			<version>6.1.4-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>bukkit</artifactId>
+					<groupId>org.bukkit</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>bukkit-classloader-check</artifactId>
+					<groupId>org.sk89q.bukkit</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>de.nlinz.xeonSuite</groupId>
-			<artifactId>XeonSuiteWarp</artifactId>
-			<version>1</version>
+			<groupId>org.spigotmc-1_12</groupId>
+			<artifactId>spigot</artifactId>
+			<version>1.12-R0.1-SNAPSHOT</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>de.linzn</groupId>
+			<artifactId>xeonSuiteBukkit</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.linzn</groupId>
+			<artifactId>xeonSuiteWarp</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -75,6 +87,7 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -90,6 +103,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<artifactId>xeonSuitePortal</artifactId>
+	<version>1.0.2-${build.number}</version>
+	<groupId>de.linzn</groupId>
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
 	<properties>
 		<build.number>SNAPSHOT</build.number>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

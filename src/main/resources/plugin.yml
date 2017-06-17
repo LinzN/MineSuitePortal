@@ -8,9 +8,9 @@ depend: [XeonSuiteBukkit]
 
 commands:
   setportal:
-    description: Set your home.
+    description: Set new portal.
   delportal:
-    description: Teleport back to your set home.
+    description: Remove a exist portal.
 
 permissions:
     xeonSuite.portal.team:
@@ -19,8 +19,8 @@ permissions:
             xeonSuite.portal.setportal: true
             xeonSuite.portal.delportal: true
     xeonSuite.portal.setportal:
-        description: Teleport to home
+        description: Set a new portal
         default: op
     xeonSuite.portal.delportal:
-        description: Teleport to home
+        description: Delete a new portal
         default: op

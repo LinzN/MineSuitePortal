@@ -1,5 +1,6 @@
 package de.nlinz.xeonSuite.portal;
 
+import org.bstats.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
@@ -28,7 +29,7 @@ public class Portalplugin extends JavaPlugin {
 		if (PTStreamInApi.loadPortals()) {
 			this.getLogger().info(PTStreamInApi.PORTALS.size() + " Portals loaded!");
 		}
-
+		new Metrics(this);
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package de.nlinz.xeonSuite.portal;
 
-import org.bstats.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;

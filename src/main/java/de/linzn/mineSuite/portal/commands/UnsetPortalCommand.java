@@ -23,11 +23,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class DeletePortalCommand implements CommandExecutor {
+public class UnsetPortalCommand implements CommandExecutor {
     public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>());
 
-    public DeletePortalCommand(PortalPlugin instance) {
+    public UnsetPortalCommand(PortalPlugin instance) {
     }
 
     @Override
@@ -35,12 +35,10 @@ public class DeletePortalCommand implements CommandExecutor {
         final Player player = (Player) sender;
         if (player.hasPermission("mineSuite.portal.delportal")) {
             this.executorServiceCommands.submit(() -> {
-                if (sender instanceof Player) {
-
-                    if (args.length > 0) {
-                        JClientPortalOutput.deletePortal(player.getUniqueId(), args[0]);
-                        return;
-                    }
+                if (args.length >= 1) {
+                    JClientPortalOutput.deletePortal(player.getUniqueId(), args[0]);
+                } else {
+                    sender.sendMessage("Benutze: /unsetportal [portalName]");
                 }
             });
         } else {

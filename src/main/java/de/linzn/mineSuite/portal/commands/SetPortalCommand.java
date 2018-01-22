@@ -49,15 +49,15 @@ public class SetPortalCommand implements CommandExecutor {
         final String server = MineSuiteCorePlugin.getInstance().getMineConfigs().generalConfig.BUNGEE_SERVER_NAME;
         if (player.hasPermission("mineSuite.portal.setportal")) {
             this.executorServiceCommands.submit(() -> {
-                if (args.length == 3) {
-                    generate(player, server, args[0], args[1], args[2], "AIR");
-                    return;
-                } else if (args.length == 4) {
-                    generate(player, server, args[0], args[1], args[2], args[3]);
-                    return;
+                if (args.length >= 3) {
+                    if (args.length == 3) {
+                        generate(player, server, args[0], args[1], args[2], "AIR");
+                    } else if (args.length == 4) {
+                        generate(player, server, args[0], args[1], args[2], args[3]);
+                    }
+                } else {
+                    sender.sendMessage("Benutze: /setportal [portalName] [portalType] [destination] <portalMaterial>");
                 }
-
-                return;
             });
         } else {
             sender.sendMessage(MineSuiteCorePlugin.getInstance().getMineConfigs().generalLanguage.NO_PERMISSIONS);

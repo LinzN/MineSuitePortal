@@ -60,4 +60,15 @@ public class PortalManager {
 
         }
     }
+
+    public static void disableOnShutdown() {
+        for (ArrayList<Portal> portalList : PortalManager.portalMap.values()) {
+            for (Portal portal : portalList) {
+                System.out.println("Disable portal " + portal.getName());
+                portalMap.get(portal.getWorld()).remove(portal);
+                portal.clearPortal();
+            }
+        }
+
+    }
 }

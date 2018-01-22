@@ -9,7 +9,7 @@ depend: [MineSuiteCore]
 commands:
   setportal:
     description: Set new portal.
-  delportal:
+  unsetportal:
     description: Remove a exist portal.
 
 permissions:

@@ -81,4 +81,18 @@ public class JClientPortalOutput {
         MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.writeOutput("mineSuitePortal", byteArrayOutputStream.toByteArray());
     }
 
+    public static void requestPortals(String serverName) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
+        try {
+            dataOutputStream.writeUTF("client_portal_request-portals");
+            dataOutputStream.writeUTF(serverName);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.writeOutput("mineSuitePortal", byteArrayOutputStream.toByteArray());
+    }
+
 }

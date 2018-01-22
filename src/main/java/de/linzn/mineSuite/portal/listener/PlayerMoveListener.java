@@ -1,7 +1,20 @@
-package de.nlinz.xeonSuite.portal.Listener;
+/*
+ * Copyright (C) 2018. MineGaming - All Rights Reserved
+ * You may use, distribute and modify this code under the
+ * terms of the LGPLv3 license, which unfortunately won't be
+ * written for another century.
+ *
+ *  You should have received a copy of the LGPLv3 license with
+ *  this file. If not, please write to: niklas.linz@enigmar.de
+ *
+ */
 
-import java.util.HashSet;
+package de.linzn.mineSuite.portal.listener;
 
+import de.linzn.mineSuite.portal.PortalPlugin;
+import de.linzn.mineSuite.portal.api.PortalManager;
+import de.linzn.mineSuite.portal.object.Portal;
+import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,9 +27,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.util.Vector;
 
-import de.nlinz.xeonSuite.portal.Portalplugin;
-import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
-import de.nlinz.xeonSuite.portal.database.object.Portal;
+import java.util.HashSet;
 
 public class PlayerMoveListener implements Listener {
 
@@ -32,10 +43,10 @@ public class PlayerMoveListener implements Listener {
 			if (f.equals(t)) {
 				return;
 			}
-			if (!PTStreamInApi.PORTALS.containsKey(t.getWorld())) {
+			if (!PortalManager.portalMap.containsKey(t.getWorld())) {
 				return;
 			}
-			for (Portal p : PTStreamInApi.PORTALS.get(t.getWorld())) {
+			for (Portal p : PortalManager.portalMap.get(t.getWorld())) {
 				if (p.isBlockInPortal(t)) {
 					PlayerMoveListener.portalPending.add(e.getPlayer().getName());
 					Vector unitVector = e.getFrom().toVector().subtract(e.getTo().toVector()).normalize();
@@ -43,7 +54,7 @@ public class PlayerMoveListener implements Listener {
 					l.setYaw(l.getYaw() + 180);
 					e.getPlayer().teleport(l);
 					e.getPlayer().setVelocity(unitVector.multiply(0.3));
-					PTStreamInApi.teleportPlayer(e.getPlayer(), p);
+					JClientPortalOutput.sendPortalUse(p, e.getPlayer().getUniqueId());
 					removePending(e.getPlayer());
 				}
 			}
@@ -53,7 +64,7 @@ public class PlayerMoveListener implements Listener {
 
 	public void removePending(final Player p) {
 
-		Bukkit.getScheduler().runTaskLaterAsynchronously(Portalplugin.inst(), new Runnable() {
+		Bukkit.getScheduler().runTaskLaterAsynchronously(PortalPlugin.inst(), new Runnable() {
 			public void run() {
 				PlayerMoveListener.portalPending.remove(p.getName());
 			}
@@ -64,9 +75,9 @@ public class PlayerMoveListener implements Listener {
 	public void PlayerPortal(PlayerPortalEvent e) {
 		if (e.getPlayer().hasMetadata("NPC"))
 			return; // Ignore NPCs
-		Block b = null;
+		Block b;
 		Block f = e.getFrom().getBlock();
-		if (!PTStreamInApi.PORTALS.containsKey(f.getWorld())) {
+		if (!PortalManager.portalMap.containsKey(f.getWorld())) {
 			return;
 		}
 		if (f.getRelative(BlockFace.NORTH).getType() == Material.PORTAL
@@ -84,7 +95,7 @@ public class PlayerMoveListener implements Listener {
 		} else {
 			return;
 		}
-		for (Portal p : PTStreamInApi.PORTALS.get(f.getWorld())) {
+		for (Portal p : PortalManager.portalMap.get(f.getWorld())) {
 			if (p.isBlockInPortal(b)) {
 				e.setCancelled(true);
 			}

@@ -1,10 +1,10 @@
-name: XeonSuitePortal
+name: MineSuitePortal
 version: ${project.version}
-description: Portalplugin
+description: PortalPlugin
 authors: [Kekshaus]
-main: de.nlinz.xeonSuite.portal.Portalplugin
+main: de.linzn.mineSuite.portal.PortalPlugin
 load: POSTWORLD
-depend: [XeonSuiteBukkit]
+depend: [MineSuiteCore]
 
 commands:
   setportal:
@@ -13,14 +13,14 @@ commands:
     description: Remove a exist portal.
 
 permissions:
-    xeonSuite.portal.team:
+    mineSuite.portal.team:
         description: Alle Permissions
         children:
-            xeonSuite.portal.setportal: true
-            xeonSuite.portal.delportal: true
-    xeonSuite.portal.setportal:
+            mineSuite.portal.setportal: true
+            mineSuite.portal.delportal: true
+    mineSuite.portal.setportal:
         description: Set a new portal
         default: op
-    xeonSuite.portal.delportal:
+    mineSuite.portal.delportal:
         description: Delete a new portal
         default: op

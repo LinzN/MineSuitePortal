@@ -1,14 +1,24 @@
-package de.nlinz.xeonSuite.portal.Listener;
+/*
+ * Copyright (C) 2018. MineGaming - All Rights Reserved
+ * You may use, distribute and modify this code under the
+ * terms of the LGPLv3 license, which unfortunately won't be
+ * written for another century.
+ *
+ *  You should have received a copy of the LGPLv3 license with
+ *  this file. If not, please write to: niklas.linz@enigmar.de
+ *
+ */
 
+package de.linzn.mineSuite.portal.listener;
+
+import de.linzn.mineSuite.portal.api.PortalManager;
+import de.linzn.mineSuite.portal.object.Portal;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
-
-import de.nlinz.xeonSuite.portal.api.PTStreamInApi;
-import de.nlinz.xeonSuite.portal.database.object.Portal;
 
 public class PhysicsListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
@@ -18,11 +28,11 @@ public class PhysicsListener implements Listener {
 				|| e.getBlock().getType() == Material.SUGAR_CANE_BLOCK)) {
 			return;
 		}
-		if (!PTStreamInApi.PORTALS.containsKey(e.getBlock().getWorld())) {
+		if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
 			return;
 		}
 
-		for (Portal p : PTStreamInApi.PORTALS.get(e.getBlock().getWorld())) {
+		for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
 			if (p.isBlockInPortal(e.getBlock())) {
 				e.setCancelled(true);
 			}
@@ -37,11 +47,11 @@ public class PhysicsListener implements Listener {
 				|| e.getBlock().getType() == Material.SUGAR_CANE_BLOCK)) {
 			return;
 		}
-		if (!PTStreamInApi.PORTALS.containsKey(e.getBlock().getWorld())) {
+		if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
 			return;
 		}
 
-		for (Portal p : PTStreamInApi.PORTALS.get(e.getBlock().getWorld())) {
+		for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
 			if (p.isBlockInPortal(e.getBlock())) {
 				e.setCancelled(true);
 			}

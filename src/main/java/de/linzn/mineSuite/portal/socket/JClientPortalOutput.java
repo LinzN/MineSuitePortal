@@ -66,7 +66,7 @@ public class JClientPortalOutput {
         MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.writeOutput("mineSuitePortal", byteArrayOutputStream.toByteArray());
     }
 
-    public static void deletePortal(UUID playerUUID, String portalName) {
+    public static void deletePortal(UUID playerUUID, String portalName, String serverName) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
         try {
@@ -74,6 +74,7 @@ public class JClientPortalOutput {
             dataOutputStream.writeUTF(playerUUID.toString());
             /* Portal name */
             dataOutputStream.writeUTF(portalName); // Portal name
+            dataOutputStream.writeUTF(serverName); // Portal name
 
         } catch (IOException e) {
             e.printStackTrace();

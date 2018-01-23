@@ -33,10 +33,11 @@ public class UnsetPortalCommand implements CommandExecutor {
     @Override
     public boolean onCommand(final CommandSender sender, Command cmd, String label, final String[] args) {
         final Player player = (Player) sender;
+        final String serverName = MineSuiteCorePlugin.getInstance().getMineConfigs().generalConfig.BUNGEE_SERVER_NAME;
         if (player.hasPermission("mineSuite.portal.delportal")) {
             this.executorServiceCommands.submit(() -> {
                 if (args.length >= 1) {
-                    JClientPortalOutput.deletePortal(player.getUniqueId(), args[0]);
+                    JClientPortalOutput.deletePortal(player.getUniqueId(), args[0], serverName);
                 } else {
                     sender.sendMessage("Benutze: /unsetportal [portalName]");
                 }

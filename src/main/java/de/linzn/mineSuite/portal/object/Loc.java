@@ -17,10 +17,10 @@ import org.bukkit.block.Block;
 
 public class Loc {
 
-    String world;
-    double x;
-    double y;
-    double z;
+    private String world;
+    private double x;
+    private double y;
+    private double z;
 
     public Loc(String world, double x, double y, double z) {
         this.world = world;
@@ -38,35 +38,11 @@ public class Loc {
     }
 
     public boolean equals(Location loc) {
-        if (!loc.getWorld().getName().equals(world)) {
-            return false;
-        }
-        if (loc.getBlockX() != x) {
-            return false;
-        }
-        if (loc.getBlockY() != y) {
-            return false;
-        }
-        if (loc.getBlockZ() != z) {
-            return false;
-        }
-        return true;
+        return loc.getWorld().getName().equals(world) && !(loc.getBlockX() != x) && !(loc.getBlockY() != y) && !(loc.getBlockZ() != z);
     }
 
     public boolean equals(Block block) {
         Location loc = block.getLocation();
-        if (!loc.getWorld().getName().equals(world)) {
-            return false;
-        }
-        if (loc.getBlockX() != x) {
-            return false;
-        }
-        if (loc.getBlockY() != y) {
-            return false;
-        }
-        if (loc.getBlockZ() != z) {
-            return false;
-        }
-        return true;
+        return loc.getWorld().getName().equals(world) && !(loc.getBlockX() != x) && !(loc.getBlockY() != y) && !(loc.getBlockZ() != z);
     }
 }

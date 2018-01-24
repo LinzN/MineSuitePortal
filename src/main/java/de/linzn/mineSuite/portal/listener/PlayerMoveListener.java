@@ -31,75 +31,71 @@ import java.util.HashSet;
 
 public class PlayerMoveListener implements Listener {
 
-	public static HashSet<String> portalPending = new HashSet<String>();
+    public static HashSet<String> portalPending = new HashSet<>();
 
-	@EventHandler(ignoreCancelled = true)
-	public void PlayerMove(PlayerMoveEvent e) {
-		if (!PlayerMoveListener.portalPending.contains(e.getPlayer().getName())) {
-			if (e.getPlayer().hasMetadata("NPC"))
-				return; // Ignore NPCs
-			Block t = e.getTo().getBlock();
-			Block f = e.getFrom().getBlock();
-			if (f.equals(t)) {
-				return;
-			}
-			if (!PortalManager.portalMap.containsKey(t.getWorld())) {
-				return;
-			}
-			for (Portal p : PortalManager.portalMap.get(t.getWorld())) {
-				if (p.isBlockInPortal(t)) {
-					PlayerMoveListener.portalPending.add(e.getPlayer().getName());
-					Vector unitVector = e.getFrom().toVector().subtract(e.getTo().toVector()).normalize();
-					Location l = e.getPlayer().getLocation();
-					l.setYaw(l.getYaw() + 180);
-					e.getPlayer().teleport(l);
-					e.getPlayer().setVelocity(unitVector.multiply(0.3));
-					JClientPortalOutput.sendPortalUse(p, e.getPlayer().getUniqueId());
-					removePending(e.getPlayer());
-				}
-			}
-		}
+    @EventHandler(ignoreCancelled = true)
+    public void PlayerMove(PlayerMoveEvent e) {
+        if (!PlayerMoveListener.portalPending.contains(e.getPlayer().getName())) {
+            if (e.getPlayer().hasMetadata("NPC"))
+                return; // Ignore NPCs
+            Block t = e.getTo().getBlock();
+            Block f = e.getFrom().getBlock();
+            if (f.equals(t)) {
+                return;
+            }
+            if (!PortalManager.portalMap.containsKey(t.getWorld())) {
+                return;
+            }
+            for (Portal p : PortalManager.portalMap.get(t.getWorld())) {
+                if (p.isBlockInPortal(t)) {
+                    PlayerMoveListener.portalPending.add(e.getPlayer().getName());
+                    Vector unitVector = e.getFrom().toVector().subtract(e.getTo().toVector()).normalize();
+                    Location l = e.getPlayer().getLocation();
+                    l.setYaw(l.getYaw() + 180);
+                    e.getPlayer().teleport(l);
+                    e.getPlayer().setVelocity(unitVector.multiply(0.3));
+                    JClientPortalOutput.sendPortalUse(p, e.getPlayer().getUniqueId());
+                    removePending(e.getPlayer());
+                }
+            }
+        }
 
-	}
+    }
 
-	public void removePending(final Player p) {
+    public void removePending(final Player p) {
 
-		Bukkit.getScheduler().runTaskLaterAsynchronously(PortalPlugin.inst(), new Runnable() {
-			public void run() {
-				PlayerMoveListener.portalPending.remove(p.getName());
-			}
-		}, 30);
-	}
+        Bukkit.getScheduler().runTaskLaterAsynchronously(PortalPlugin.inst(), () -> PlayerMoveListener.portalPending.remove(p.getName()), 30);
+    }
 
-	@EventHandler(ignoreCancelled = true)
-	public void PlayerPortal(PlayerPortalEvent e) {
-		if (e.getPlayer().hasMetadata("NPC"))
-			return; // Ignore NPCs
-		Block b;
-		Block f = e.getFrom().getBlock();
-		if (!PortalManager.portalMap.containsKey(f.getWorld())) {
-			return;
-		}
-		if (f.getRelative(BlockFace.NORTH).getType() == Material.PORTAL
-				|| f.getRelative(BlockFace.NORTH).getType() == Material.ENDER_PORTAL) {
-			b = f.getRelative(BlockFace.NORTH);
-		} else if (f.getRelative(BlockFace.EAST).getType() == Material.PORTAL
-				|| f.getRelative(BlockFace.EAST).getType() == Material.ENDER_PORTAL) {
-			b = f.getRelative(BlockFace.EAST);
-		} else if (f.getRelative(BlockFace.SOUTH).getType() == Material.PORTAL
-				|| f.getRelative(BlockFace.SOUTH).getType() == Material.ENDER_PORTAL) {
-			b = f.getRelative(BlockFace.SOUTH);
-		} else if (f.getRelative(BlockFace.WEST).getType() == Material.PORTAL
-				|| f.getRelative(BlockFace.WEST).getType() == Material.ENDER_PORTAL) {
-			b = f.getRelative(BlockFace.WEST);
-		} else {
-			return;
-		}
-		for (Portal p : PortalManager.portalMap.get(f.getWorld())) {
-			if (p.isBlockInPortal(b)) {
-				e.setCancelled(true);
-			}
-		}
-	}
+    @EventHandler(ignoreCancelled = true)
+    public void PlayerPortal(PlayerPortalEvent e) {
+        if (e.getPlayer().hasMetadata("NPC"))
+            return; // Ignore NPCs
+        Block b;
+        Block f = e.getFrom().getBlock();
+        if (!PortalManager.portalMap.containsKey(f.getWorld())) {
+            return;
+        }
+        if (f.getRelative(BlockFace.NORTH).getType() == Material.PORTAL
+                || f.getRelative(BlockFace.NORTH).getType() == Material.ENDER_PORTAL) {
+            b = f.getRelative(BlockFace.NORTH);
+        } else if (f.getRelative(BlockFace.EAST).getType() == Material.PORTAL
+                || f.getRelative(BlockFace.EAST).getType() == Material.ENDER_PORTAL) {
+            b = f.getRelative(BlockFace.EAST);
+        } else if (f.getRelative(BlockFace.SOUTH).getType() == Material.PORTAL
+                || f.getRelative(BlockFace.SOUTH).getType() == Material.ENDER_PORTAL) {
+            b = f.getRelative(BlockFace.SOUTH);
+        } else if (f.getRelative(BlockFace.WEST).getType() == Material.PORTAL
+                || f.getRelative(BlockFace.WEST).getType() == Material.ENDER_PORTAL) {
+            b = f.getRelative(BlockFace.WEST);
+        } else {
+            return;
+        }
+        for (Portal p : PortalManager.portalMap.get(f.getWorld())) {
+            if (p.isBlockInPortal(b)) {
+                e.setCancelled(true);
+            }
+        }
+    }
 
 }

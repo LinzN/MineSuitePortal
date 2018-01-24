@@ -56,9 +56,9 @@ public class JClientPortalOutput {
             dataOutputStream.writeDouble(portal.getMin().getZ());
 
             /* Cords of min side maxX, maxY, maxZ */
-            dataOutputStream.writeDouble(portal.getMin().getX());
-            dataOutputStream.writeDouble(portal.getMin().getY());
-            dataOutputStream.writeDouble(portal.getMin().getZ());
+            dataOutputStream.writeDouble(portal.getMax().getX());
+            dataOutputStream.writeDouble(portal.getMax().getY());
+            dataOutputStream.writeDouble(portal.getMax().getZ());
 
         } catch (IOException e) {
             e.printStackTrace();

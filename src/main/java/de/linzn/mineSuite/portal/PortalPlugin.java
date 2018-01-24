@@ -18,8 +18,9 @@ import de.linzn.mineSuite.portal.commands.SetPortalCommand;
 import de.linzn.mineSuite.portal.commands.UnsetPortalCommand;
 import de.linzn.mineSuite.portal.listener.PhysicsListener;
 import de.linzn.mineSuite.portal.listener.PlayerMoveListener;
+import de.linzn.mineSuite.portal.socket.JClientConnectionListener;
 import de.linzn.mineSuite.portal.socket.JClientPortalListener;
-import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PortalPlugin extends JavaPlugin {
@@ -38,12 +39,14 @@ public class PortalPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new PhysicsListener(), this);
         MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.registerIncomingDataListener("mineSuitePortal", new JClientPortalListener());
-        this.getServer().getScheduler().runTaskLaterAsynchronously(this, () -> JClientPortalOutput.requestPortals(MineSuiteCorePlugin.getInstance().getMineConfigs().generalConfig.BUNGEE_SERVER_NAME), 40);
+        MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.registerConnectionListener(new JClientConnectionListener());
+        //this.getServer().getScheduler().runTaskLaterAsynchronously(this, () -> JClientPortalOutput.requestPortals(MineSuiteCorePlugin.getInstance().getMineConfigs().generalConfig.BUNGEE_SERVER_NAME), 40);
     }
 
     @Override
     public void onDisable() {
         PortalManager.disableOnShutdown();
+        HandlerList.unregisterAll(this);
     }
 
     private void loadCommands() {

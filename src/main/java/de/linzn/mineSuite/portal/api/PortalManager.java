@@ -38,7 +38,7 @@ public class PortalManager {
         return null;
     }
 
-    public static void enablePortalFrame(String portalName, String type, Location max, Location min) {
+    public static void enablePortalFrame(String portalName, String type, Location min, Location max) {
         if (max.getWorld() == null) {
             Bukkit.getConsoleSender()
                     .sendMessage(ChatColor.RED + "World does not exist portal " + portalName + " will not load :(");
@@ -62,13 +62,13 @@ public class PortalManager {
     }
 
     public static void disableOnShutdown() {
-        for (ArrayList<Portal> portalList : PortalManager.portalMap.values()) {
+        for (ArrayList<Portal> portalList : portalMap.values()) {
             for (Portal portal : portalList) {
                 System.out.println("Disable portal " + portal.getName());
-                portalMap.get(portal.getWorld()).remove(portal);
                 portal.clearPortal();
             }
+            portalList.clear();
         }
-
+        portalMap.clear();
     }
 }

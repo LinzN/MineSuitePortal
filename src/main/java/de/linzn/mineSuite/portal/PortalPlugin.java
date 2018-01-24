@@ -40,7 +40,6 @@ public class PortalPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PhysicsListener(), this);
         MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.registerIncomingDataListener("mineSuitePortal", new JClientPortalListener());
         MineSuiteCorePlugin.getInstance().getMineJSocketClient().jClientConnection1.registerConnectionListener(new JClientConnectionListener());
-        //this.getServer().getScheduler().runTaskLaterAsynchronously(this, () -> JClientPortalOutput.requestPortals(MineSuiteCorePlugin.getInstance().getMineConfigs().generalConfig.BUNGEE_SERVER_NAME), 40);
     }
 
     @Override

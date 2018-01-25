@@ -38,11 +38,37 @@ public class Loc {
     }
 
     public boolean equals(Location loc) {
-        return loc.getWorld().getName().equals(world) && !(loc.getBlockX() != x) && !(loc.getBlockY() != y) && !(loc.getBlockZ() != z);
+        if (!loc.getWorld().getName().equals(world)) {
+            return false;
+        }
+        if (loc.getBlockX() != x) {
+            return false;
+        }
+        if (loc.getBlockY() != y) {
+            return false;
+        }
+        if (loc.getBlockZ() != z) {
+            return false;
+        }
+        return true;
     }
+
 
     public boolean equals(Block block) {
         Location loc = block.getLocation();
-        return loc.getWorld().getName().equals(world) && !(loc.getBlockX() != x) && !(loc.getBlockY() != y) && !(loc.getBlockZ() != z);
+        if (!loc.getWorld().getName().equals(world)) {
+            return false;
+        }
+        if (loc.getBlockX() != x) {
+            return false;
+        }
+        if (loc.getBlockY() != y) {
+            return false;
+        }
+        if (loc.getBlockZ() != z) {
+            return false;
+        }
+        return true;
     }
+
 }

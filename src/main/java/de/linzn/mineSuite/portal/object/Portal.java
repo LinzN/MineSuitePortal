@@ -73,9 +73,9 @@ public class Portal {
             Block b = locs.getBlock();
             if (b.getType() == fillType.getBlockMaterial()) {
                 b.setType(FillType.AIR.getBlockMaterial());
-            } else if (fillType.equals(FillType.LAVA) && b.getType().equals(Material.LAVA)) {
+            } else if (fillType.equals(FillType.LAVA) && b.getType().equals(Material.STATIONARY_LAVA)) {
                 b.setType(FillType.AIR.getBlockMaterial());
-            } else if (fillType.equals(FillType.WATER) && b.getType().equals(Material.WATER)) {
+            } else if (fillType.equals(FillType.WATER) && b.getType().equals(Material.STATIONARY_WATER)) {
                 b.setType(FillType.AIR.getBlockMaterial());
             }
 

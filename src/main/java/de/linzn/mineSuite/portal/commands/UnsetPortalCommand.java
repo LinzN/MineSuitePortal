@@ -12,6 +12,7 @@
 package de.linzn.mineSuite.portal.commands;
 
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
+import de.linzn.mineSuite.core.configurations.YamlFiles.GeneralLanguage;
 import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
 import org.bukkit.command.Command;
@@ -39,11 +40,11 @@ public class UnsetPortalCommand implements CommandExecutor {
                 if (args.length >= 1) {
                     JClientPortalOutput.deletePortal(player.getUniqueId(), args[0], serverName);
                 } else {
-                    sender.sendMessage("Benutze: /unsetportal [portalName]");
+                    sender.sendMessage(GeneralLanguage.portal_UNSETPORTAL_USAGE);
                 }
             });
         } else {
-            sender.sendMessage(MineSuiteCorePlugin.getInstance().getMineConfigs().generalLanguage.NO_PERMISSIONS);
+            sender.sendMessage(GeneralLanguage.global_NO_PERMISSIONS);
         }
         return false;
     }

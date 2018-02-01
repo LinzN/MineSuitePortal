@@ -13,6 +13,7 @@ package de.linzn.mineSuite.portal.commands;
 
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
+import de.linzn.mineSuite.core.configurations.YamlFiles.GeneralLanguage;
 import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.object.Portal;
 import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
@@ -56,11 +57,11 @@ public class SetPortalCommand implements CommandExecutor {
                         generate(player, server, args[0], args[1], args[2], args[3]);
                     }
                 } else {
-                    sender.sendMessage("Benutze: /setportal [portalName] [portalType] [destination] <portalMaterial>");
+                    sender.sendMessage(GeneralLanguage.portal_SETPORTAL_USAGE);
                 }
             });
         } else {
-            sender.sendMessage(MineSuiteCorePlugin.getInstance().getMineConfigs().generalLanguage.NO_PERMISSIONS);
+            sender.sendMessage(GeneralLanguage.global_NO_PERMISSIONS);
         }
         return false;
     }

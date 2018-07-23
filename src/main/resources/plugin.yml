@@ -5,7 +5,7 @@ authors: [Kekshaus]
 main: de.linzn.mineSuite.portal.PortalPlugin
 load: POSTWORLD
 depend: [MineSuiteCore]
-
+api-version: 1.13
 commands:
   setportal:
     description: Set new portal.

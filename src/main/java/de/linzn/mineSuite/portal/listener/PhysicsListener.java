@@ -21,41 +21,41 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
 public class PhysicsListener implements Listener {
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-	public void onBlockPhysics(BlockPhysicsEvent e) {
-		if (!(e.getBlock().isLiquid() || e.getBlock().getType() == Material.LEGACY_PORTAL
-				|| e.getBlock().getType() == Material.LEGACY_ENDER_PORTAL
-				|| e.getBlock().getType() == Material.LEGACY_SUGAR_CANE_BLOCK)) {
-			return;
-		}
-		if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
-			return;
-		}
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onBlockPhysics(BlockPhysicsEvent e) {
+        if (!(e.getBlock().isLiquid() || e.getBlock().getType() == Material.NETHER_PORTAL
+                || e.getBlock().getType() == Material.END_PORTAL
+                || e.getBlock().getType() == Material.SUGAR_CANE)) {
+            return;
+        }
+        if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
+            return;
+        }
 
-		for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
-			if (p.isBlockInPortal(e.getBlock())) {
-				e.setCancelled(true);
-			}
-		}
+        for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
+            if (p.isBlockInPortal(e.getBlock())) {
+                e.setCancelled(true);
+            }
+        }
 
-	}
+    }
 
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-	public void onBlockPhysics(BlockFromToEvent e) {
-		if (!(e.getBlock().isLiquid() || e.getBlock().getType() == Material.LEGACY_PORTAL
-				|| e.getBlock().getType() == Material.LEGACY_ENDER_PORTAL
-				|| e.getBlock().getType() == Material.LEGACY_SUGAR_CANE_BLOCK)) {
-			return;
-		}
-		if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
-			return;
-		}
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onBlockPhysics(BlockFromToEvent e) {
+        if (!(e.getBlock().isLiquid() || e.getBlock().getType() == Material.NETHER_PORTAL
+                || e.getBlock().getType() == Material.END_PORTAL
+                || e.getBlock().getType() == Material.SUGAR_CANE)) {
+            return;
+        }
+        if (!PortalManager.portalMap.containsKey(e.getBlock().getWorld())) {
+            return;
+        }
 
-		for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
-			if (p.isBlockInPortal(e.getBlock())) {
-				e.setCancelled(true);
-			}
-		}
+        for (Portal p : PortalManager.portalMap.get(e.getBlock().getWorld())) {
+            if (p.isBlockInPortal(e.getBlock())) {
+                e.setCancelled(true);
+            }
+        }
 
-	}
+    }
 }

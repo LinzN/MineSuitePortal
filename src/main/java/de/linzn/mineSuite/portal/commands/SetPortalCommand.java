@@ -11,13 +11,15 @@
 
 package de.linzn.mineSuite.portal.commands;
 
-import com.sk89q.worldedit.bukkit.selections.Selection;
+import com.sk89q.worldedit.IncompleteRegionException;
+import com.sk89q.worldedit.Vector;
+import com.sk89q.worldedit.bukkit.BukkitWorld;
+import com.sk89q.worldedit.regions.Region;
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
 import de.linzn.mineSuite.core.configurations.YamlFiles.GeneralLanguage;
 import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.object.Portal;
 import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -31,16 +33,23 @@ public class SetPortalCommand implements CommandExecutor {
     public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>());
 
-    public SetPortalCommand(PortalPlugin instance) {
-    }
-
     private static void generate(Player player, String server, String name, String type, String dest,
                                  String filltype) {
-        Selection sel = PortalPlugin.WORLDEDIT.getSelection(player);
-        Location max = sel.getMaximumPoint();
-        Location min = sel.getMinimumPoint();
+        Region region = null;
+        try {
+            region = PortalPlugin.WORLDEDIT.getSession(player).getSelection(new BukkitWorld(player.getWorld()));
+        } catch (IncompleteRegionException e) {
+            e.printStackTrace();
+        }
 
-        Portal portal = new Portal(name, filltype, max, min);
+        if (region == null) {
+            player.sendMessage(GeneralLanguage.portal_NO_SELECTION);
+            return;
+        }
+        Vector max = region.getMaximumPoint();
+        Vector min = region.getMinimumPoint();
+
+        Portal portal = new Portal(name, filltype, max, min, player.getWorld());
         JClientPortalOutput.createPortal(server, player.getUniqueId(), type, dest, portal);
     }
 

@@ -12,6 +12,7 @@
 
 package de.linzn.mineSuite.portal.object;
 
+import com.sk89q.worldedit.Vector;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -25,12 +26,12 @@ public class Portal {
     private ArrayList<Loc> blocks = new ArrayList<>();
     private FillType fillType;
     private World world;
-    private Location min;
-    private Location max;
+    private Vector min;
+    private Vector max;
 
-    public Portal(String name, String fillType, Location max, Location min) {
+    public Portal(String name, String fillType, Vector max, Vector min, World world) {
         this.name = name;
-        this.world = max.getWorld();
+        this.world = world;
         this.min = min;
         this.max = max;
         try {
@@ -45,7 +46,7 @@ public class Portal {
         for (int x = min.getBlockX(); x <= max.getBlockX(); x++) {
             for (int y = min.getBlockY(); y <= max.getBlockY(); y++) {
                 for (int z = min.getBlockZ(); z <= max.getBlockZ(); z++) {
-                    blocks.add(new Loc(max.getWorld().getName(), x, y, z));
+                    blocks.add(new Loc(world.getName(), x, y, z));
                 }
             }
         }
@@ -73,9 +74,9 @@ public class Portal {
             Block b = locs.getBlock();
             if (b.getType() == fillType.getBlockMaterial()) {
                 b.setType(FillType.AIR.getBlockMaterial());
-            } else if (fillType.equals(FillType.LAVA) && b.getType().equals(Material.LEGACY_STATIONARY_LAVA)) {
+            } else if (fillType.equals(FillType.LAVA) && b.getType().equals(Material.LAVA)) {
                 b.setType(FillType.AIR.getBlockMaterial());
-            } else if (fillType.equals(FillType.WATER) && b.getType().equals(Material.LEGACY_STATIONARY_WATER)) {
+            } else if (fillType.equals(FillType.WATER) && b.getType().equals(Material.WATER)) {
                 b.setType(FillType.AIR.getBlockMaterial());
             }
 
@@ -99,11 +100,11 @@ public class Portal {
         return world;
     }
 
-    public Location getMin() {
+    public Vector getMin() {
         return this.min;
     }
 
-    public Location getMax() {
+    public Vector getMax() {
         return this.max;
     }
 

@@ -14,7 +14,7 @@ package de.linzn.mineSuite.portal.object;
 import org.bukkit.Material;
 
 public enum FillType {
-    AIR(Material.AIR), WATER(Material.WATER), LAVA(Material.LAVA), PORTAL(Material.LEGACY_PORTAL);
+    AIR(Material.AIR), WATER(Material.WATER), LAVA(Material.LAVA), PORTAL(Material.NETHER_PORTAL);
 
     private final Material blockMaterial;
 

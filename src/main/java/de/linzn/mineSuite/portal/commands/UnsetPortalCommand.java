@@ -13,7 +13,6 @@ package de.linzn.mineSuite.portal.commands;
 
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
 import de.linzn.mineSuite.core.configurations.YamlFiles.GeneralLanguage;
-import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.socket.JClientPortalOutput;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,8 +27,6 @@ public class UnsetPortalCommand implements CommandExecutor {
     public ThreadPoolExecutor executorServiceCommands = new ThreadPoolExecutor(1, 1, 250L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>());
 
-    public UnsetPortalCommand(PortalPlugin instance) {
-    }
 
     @Override
     public boolean onCommand(final CommandSender sender, Command cmd, String label, final String[] args) {

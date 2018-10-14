@@ -11,11 +11,11 @@
 
 package de.linzn.mineSuite.portal.socket;
 
+import com.sk89q.worldedit.Vector;
 import de.linzn.jSocket.core.IncomingDataListener;
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
 import de.linzn.mineSuite.portal.api.PortalManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
 
 import java.io.ByteArrayInputStream;
@@ -28,8 +28,6 @@ public class JClientPortalListener implements IncomingDataListener {
 
     @Override
     public void onEvent(String channel, UUID clientUUID, byte[] dataInBytes) {
-        /* Nothing yet */
-        // TODO Auto-generated method stub
         DataInputStream in = new DataInputStream(new ByteArrayInputStream(dataInBytes));
         String subChannel;
         try {
@@ -48,14 +46,14 @@ public class JClientPortalListener implements IncomingDataListener {
                 double minX = in.readDouble();
                 double minY = in.readDouble();
                 double minZ = in.readDouble();
-                Location min = new Location(world, minX, minY, minZ);
+                Vector min = new Vector(minX, minY, minZ);
                 /* Cords of min side maxX, maxY, maxZ */
                 double maxX = in.readDouble();
                 double maxY = in.readDouble();
                 double maxZ = in.readDouble();
-                Location max = new Location(world, maxX, maxY, maxZ);
+                Vector max = new Vector(maxX, maxY, maxZ);
 
-                PortalManager.enablePortalFrame(portalName, fillType, min, max);
+                PortalManager.enablePortalFrame(portalName, fillType, min, max, world);
             }
 
             if (subChannel.equals("server_portal_disable-portal")) {

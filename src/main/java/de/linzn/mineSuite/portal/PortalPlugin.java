@@ -49,8 +49,8 @@ public class PortalPlugin extends JavaPlugin {
     }
 
     private void loadCommands() {
-        getCommand("setportal").setExecutor(new SetPortalCommand(this));
-        getCommand("unsetportal").setExecutor(new UnsetPortalCommand(this));
+        getCommand("setportal").setExecutor(new SetPortalCommand());
+        getCommand("unsetportal").setExecutor(new UnsetPortalCommand());
     }
 
     private void loadWorldEdit() {

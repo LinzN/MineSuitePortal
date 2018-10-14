@@ -76,17 +76,17 @@ public class PlayerMoveListener implements Listener {
         if (!PortalManager.portalMap.containsKey(f.getWorld())) {
             return;
         }
-        if (f.getRelative(BlockFace.NORTH).getType() == Material.LEGACY_PORTAL
-                || f.getRelative(BlockFace.NORTH).getType() == Material.LEGACY_ENDER_PORTAL) {
+        if (f.getRelative(BlockFace.NORTH).getType() == Material.NETHER_PORTAL
+                || f.getRelative(BlockFace.NORTH).getType() == Material.END_PORTAL) {
             b = f.getRelative(BlockFace.NORTH);
-        } else if (f.getRelative(BlockFace.EAST).getType() == Material.LEGACY_PORTAL
-                || f.getRelative(BlockFace.EAST).getType() == Material.LEGACY_ENDER_PORTAL) {
+        } else if (f.getRelative(BlockFace.EAST).getType() == Material.NETHER_PORTAL
+                || f.getRelative(BlockFace.EAST).getType() == Material.END_PORTAL) {
             b = f.getRelative(BlockFace.EAST);
-        } else if (f.getRelative(BlockFace.SOUTH).getType() == Material.LEGACY_PORTAL
-                || f.getRelative(BlockFace.SOUTH).getType() == Material.LEGACY_ENDER_PORTAL) {
+        } else if (f.getRelative(BlockFace.SOUTH).getType() == Material.NETHER_PORTAL
+                || f.getRelative(BlockFace.SOUTH).getType() == Material.END_PORTAL) {
             b = f.getRelative(BlockFace.SOUTH);
-        } else if (f.getRelative(BlockFace.WEST).getType() == Material.LEGACY_PORTAL
-                || f.getRelative(BlockFace.WEST).getType() == Material.LEGACY_ENDER_PORTAL) {
+        } else if (f.getRelative(BlockFace.WEST).getType() == Material.NETHER_PORTAL
+                || f.getRelative(BlockFace.WEST).getType() == Material.END_PORTAL) {
             b = f.getRelative(BlockFace.WEST);
         } else {
             return;

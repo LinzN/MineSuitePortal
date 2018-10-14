@@ -12,11 +12,11 @@
 package de.linzn.mineSuite.portal.api;
 
 
+import com.sk89q.worldedit.Vector;
 import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.object.Portal;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.World;
 
 import java.util.ArrayList;
@@ -38,14 +38,14 @@ public class PortalManager {
         return null;
     }
 
-    public static void enablePortalFrame(String portalName, String type, Location min, Location max) {
-        if (max.getWorld() == null) {
+    public static void enablePortalFrame(String portalName, String type, Vector min, Vector max, World world) {
+        if (world == null) {
             Bukkit.getConsoleSender()
                     .sendMessage(ChatColor.RED + "World does not exist portal " + portalName + " will not load :(");
             return;
         }
-        Portal portal = new Portal(portalName, type, max, min);
-        ArrayList<Portal> worldPortals = portalMap.computeIfAbsent(max.getWorld(), k -> new ArrayList<>());
+        Portal portal = new Portal(portalName, type, max, min, world);
+        ArrayList<Portal> worldPortals = portalMap.computeIfAbsent(world, k -> new ArrayList<>());
         worldPortals.add(portal);
         System.out.println("Enable portal " + portalName);
         PortalPlugin.inst().getServer().getScheduler().runTask(PortalPlugin.inst(), portal::fillPortal);

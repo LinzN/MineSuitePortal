@@ -12,7 +12,8 @@
 
 package de.linzn.mineSuite.portal.object;
 
-import com.sk89q.worldedit.Vector;
+
+import com.sk89q.worldedit.math.BlockVector3;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -26,10 +27,10 @@ public class Portal {
     private ArrayList<Loc> blocks = new ArrayList<>();
     private FillType fillType;
     private World world;
-    private Vector min;
-    private Vector max;
+    private BlockVector3 min;
+    private BlockVector3 max;
 
-    public Portal(String name, String fillType, Vector max, Vector min, World world) {
+    public Portal(String name, String fillType, BlockVector3 max, BlockVector3 min, World world) {
         this.name = name;
         this.world = world;
         this.min = min;
@@ -100,11 +101,11 @@ public class Portal {
         return world;
     }
 
-    public Vector getMin() {
+    public BlockVector3 getMin() {
         return this.min;
     }
 
-    public Vector getMax() {
+    public BlockVector3 getMax() {
         return this.max;
     }
 

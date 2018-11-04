@@ -12,7 +12,7 @@
 package de.linzn.mineSuite.portal.api;
 
 
-import com.sk89q.worldedit.Vector;
+import com.sk89q.worldedit.math.BlockVector3;
 import de.linzn.mineSuite.portal.PortalPlugin;
 import de.linzn.mineSuite.portal.object.Portal;
 import org.bukkit.Bukkit;
@@ -38,7 +38,7 @@ public class PortalManager {
         return null;
     }
 
-    public static void enablePortalFrame(String portalName, String type, Vector min, Vector max, World world) {
+    public static void enablePortalFrame(String portalName, String type, BlockVector3 min, BlockVector3 max, World world) {
         if (world == null) {
             Bukkit.getConsoleSender()
                     .sendMessage(ChatColor.RED + "World does not exist portal " + portalName + " will not load :(");

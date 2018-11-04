@@ -11,7 +11,8 @@
 
 package de.linzn.mineSuite.portal.socket;
 
-import com.sk89q.worldedit.Vector;
+
+import com.sk89q.worldedit.math.BlockVector3;
 import de.linzn.jSocket.core.IncomingDataListener;
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
 import de.linzn.mineSuite.portal.api.PortalManager;
@@ -46,12 +47,12 @@ public class JClientPortalListener implements IncomingDataListener {
                 double minX = in.readDouble();
                 double minY = in.readDouble();
                 double minZ = in.readDouble();
-                Vector min = new Vector(minX, minY, minZ);
+                BlockVector3 min = BlockVector3.at(minX, minY, minZ);
                 /* Cords of min side maxX, maxY, maxZ */
                 double maxX = in.readDouble();
                 double maxY = in.readDouble();
                 double maxZ = in.readDouble();
-                Vector max = new Vector(maxX, maxY, maxZ);
+                BlockVector3 max = BlockVector3.at(maxX, maxY, maxZ);
 
                 PortalManager.enablePortalFrame(portalName, fillType, min, max, world);
             }

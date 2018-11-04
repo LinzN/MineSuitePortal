@@ -12,8 +12,8 @@
 package de.linzn.mineSuite.portal.commands;
 
 import com.sk89q.worldedit.IncompleteRegionException;
-import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.BukkitWorld;
+import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.Region;
 import de.linzn.mineSuite.core.MineSuiteCorePlugin;
 import de.linzn.mineSuite.core.configurations.YamlFiles.GeneralLanguage;
@@ -46,8 +46,8 @@ public class SetPortalCommand implements CommandExecutor {
             player.sendMessage(GeneralLanguage.portal_NO_SELECTION);
             return;
         }
-        Vector max = region.getMaximumPoint();
-        Vector min = region.getMinimumPoint();
+        BlockVector3 max = region.getMaximumPoint();
+        BlockVector3 min = region.getMinimumPoint();
 
         Portal portal = new Portal(name, filltype, max, min, player.getWorld());
         JClientPortalOutput.createPortal(server, player.getUniqueId(), type, dest, portal);
